@@ -16,11 +16,7 @@ projeto dbt de forma progressiva.
 
 - Git;
 - uv;
-- um profile local do dbt chamado `estudos_dbt`, configurado para usar o arquivo
-  `lab.duckdb`.
-
-O arquivo `profiles.yml` contém configurações locais e fica fora deste
-repositório. Consulte a documentação oficial do dbt para configurar um profile.
+- um profile local do dbt chamado `estudos_dbt`.
 
 ## Configuração do ambiente
 
@@ -29,6 +25,18 @@ Clone o repositório e instale as dependências:
 ```bash
 uv sync
 ```
+
+Crie o diretório de configuração do dbt e copie o profile de exemplo:
+
+```bash
+mkdir -p ~/.dbt
+cp profiles.yml.example ~/.dbt/profiles.yml
+```
+
+No arquivo `~/.dbt/profiles.yml`, substitua o valor de `path` pelo caminho
+absoluto do arquivo `lab.duckdb` neste projeto. O arquivo real permanece fora do
+repositório porque pode conter configurações específicas ou credenciais do
+ambiente local.
 
 Crie o schema e os dados de origem usados nos exercícios:
 
@@ -53,6 +61,7 @@ uv run dbt build
 │   └── staging/           # Preparação inicial dos dados de origem
 ├── scripts/               # Preparação do ambiente local de estudos
 ├── dbt_project.yml        # Configuração do projeto dbt
+├── profiles.yml.example   # Exemplo do profile local esperado
 └── pyproject.toml         # Dependências e configuração Python
 ```
 

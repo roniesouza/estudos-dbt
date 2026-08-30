@@ -1,0 +1,9 @@
+estudos_dbt:
+  target: dev
+
+  outputs:
+    dev:
+      type: duckdb
+      path: /caminho/absoluto/para/estudos-dbt/lab.duckdb
+      schema: dw
+      threads: 4
