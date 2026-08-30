@@ -1,0 +1,21 @@
+name: "estudos_dbt"
+version: "1.0.0"
+config-version: 2
+
+profile: "estudos_dbt"
+
+model-paths: ["models"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  estudos_dbt:
+    staging:
+      +schema: staging
+      +materialized: view
+
+    marts:
+      +schema: marts
+      +materialized: table
